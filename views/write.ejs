@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>신규 게시판</title>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    </head>
-    <body>
-        <h1>새로운 게시물 작성하기</h1>
-        <form name="write-form">
-            <fieldset>
-                <legend>게시글</legend>
-                <input type="text" id="title" placeholder="제목" /><br />
-                <br />
-                <textarea id="contents" cols="30" rows="10" placeholder="내용"></textarea><br />
-                <button type="button" onclick="writeFunc()">등록</button>
-            </fieldset>
-        </form>
-        <a href="/post">목록으로 돌아가기</a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>신규 게시판</title>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<h1>새로운 게시물 작성하기</h1>
+		<form name="write-form">
+			<fieldset>
+				<legend>게시글</legend>
+				<input type="text" id="title" placeholder="제목" /><br />
+				<br />
+				<textarea
+					id="contents"
+					cols="30"
+					rows="10"
+					placeholder="내용"
+				></textarea
+				><br />
+				<button type="button" onclick="writeFunc()">등록</button>
+			</fieldset>
+		</form>
+		<a href="/post">목록으로 돌아가기</a>
 
-        <script>
-            async function writeFunc() {
-                const res = await axios({
-                    method: "POST",
-                    url: "/api/post/write",
-                    data: {
-                        title: document.querySelector("#title").value,
-                        contents: document.querySelector("#contents").value,
-                    },
-                });
-                console.log(res);
-                const { success, result } = res.data;
-                if (success) {
-                    alert("등록되었습니다.");
-                    document.location.href = `post/${result}`;
-                }
-            }
-        </script>
-    </body>
+		<script>
+			async function writeFunc() {
+				const login = JSON.parse(localStorage.getItem('login'));
+				const res = await axios({
+					method: 'POST',
+					url: '/api/post/write',
+					data: {
+						memberId: login.memberId,
+						title: document.querySelector('#title').value,
+						contents: document.querySelector('#contents').value,
+					},
+				});
+				console.log(res);
+				const { success, result } = res.data;
+				if (success) {
+					alert('등록되었습니다.');
+					document.location.href = `post/${result}`;
+				}
+			}
+		</script>
+	</body>
 </html>

@@ -17,14 +17,10 @@ const PostModel = (sequelize) => {
 			type: DataTypes.TEXT('medium'),
 			allowNull: false,
 		},
-		username: {
-			type: DataTypes.STRING(20),
-			allowNull: false,
-		},
-		password: {
-			type: DataTypes.STRING(50),
-			allowNull: false,
-		},
+		// password: {
+		// 	type: DataTypes.STRING(50),
+		// 	allowNull: false,
+		// },
 	});
 };
 

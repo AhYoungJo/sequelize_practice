@@ -41,6 +41,18 @@ db.Profile.belongsTo(db.Member, {
 db.Post.hasMany(db.Comment);
 db.Comment.belongsTo(db.Post);
 
+db.Member.hasOne(db.Post, { foreignKey: 'memberId', onDelete: 'CASCADE' });
+db.Post.belongsTo(db.Member, {
+	foreignKey: 'memberId',
+	onDelete: 'CASCADE',
+});
+
+db.Member.hasOne(db.Comment, { foreignKey: 'memberId', onDelete: 'CASCADE' });
+db.Comment.belongsTo(db.Member, {
+	foreignKey: 'memberId',
+	onDelete: 'CASCADE',
+});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
