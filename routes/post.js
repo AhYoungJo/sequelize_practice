@@ -10,5 +10,6 @@ router.get("/:id", controller.post);
 router.post("/write", controller.write);
 router.patch("/update", controller.update);
 router.delete("/delete", controller.delete);
+router.post("/comment", controller.comment);
 
 module.exports = router;
