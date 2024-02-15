@@ -13,6 +13,8 @@ if (config.use_env_variable) {
 }
 
 db.Post = require("./post")(sequelize);
+db.Member = require("./member")(sequelize);
+db.Profile = require("./profile")(sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
