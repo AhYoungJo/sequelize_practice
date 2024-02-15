@@ -1,14 +1,22 @@
 exports.main = (req, res) => {
-    res.render("index");
+	res.render('index');
 };
 
 exports.post = (req, res) => {
-    res.render("post");
+	res.render('post');
 };
 
 exports.detail = (req, res) => {
-    res.render("detail");
+	res.render('detail');
 };
 exports.write = (req, res) => {
-    res.render("write");
+	res.render('write');
+};
+
+exports.login = (req, res) => {
+	res.render('login');
+};
+
+exports.signup = (req, res) => {
+	res.render('signup');
 };
